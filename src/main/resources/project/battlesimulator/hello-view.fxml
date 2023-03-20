@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<TabPane fx:id="allTabs" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="795.0" prefWidth="1539.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.battlesimulator.HelloController">
+  <tabs>
+    <Tab text="Character Maker">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="611.0" prefWidth="1093.0">
+               <children>
+                  <Label layoutX="526.0" layoutY="20.0" text="Enter Your Character's Info">
+                     <font>
+                        <Font size="39.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="132.0" layoutY="111.0" text="Name:">
+                     <font>
+                        <Font size="38.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="characterNameText" layoutX="252.0" layoutY="101.0" onKeyReleased="#nameTyped">
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </TextField>
+                  <Label fx:id="threeGadgetsLabel" layoutX="961.0" layoutY="83.0" text="Pick Three Gadgets">
+                     <font>
+                        <Font size="38.0" />
+                     </font>
+                  </Label>
+                  <ListView fx:id="pickedGadgets" layoutX="800.0" layoutY="200.0" onMouseClicked="#gadgetDeselected" prefHeight="374.0" prefWidth="322.0" />
+                  <ListView fx:id="unpickedGadgets" layoutX="1139.0" layoutY="200.0" onMouseClicked="#gadgetSelected" prefHeight="374.0" prefWidth="322.0" />
+                  <Button fx:id="confirmInfoBtn" disable="true" layoutX="345.0" layoutY="306.0" mnemonicParsing="false" onAction="#confirmCharacterInfo" text="Confim Info">
+                     <font>
+                        <Font size="38.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="pickedGadgetsLabel" layoutX="955.0" layoutY="160.0" text="Picked">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="unpickedGadgetsLabel" layoutX="1256.0" layoutY="160.0" text="Unpicked">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="1017.0" layoutY="138.0" text="Choose Nanobots, Virus or Remote Control" />
+                  <Label layoutX="297.0" layoutY="471.0" text="DO NOT LEAVE THIS TAB">
+                     <font>
+                        <Font size="31.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="345.0" layoutY="590.0" text="Played Before?">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="526.0" layoutY="595.0" mnemonicParsing="false" onAction="#skipIntro" text="Click this button" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab onSelectionChanged="#upgradeTabSelected" text="Upgrades">
+      <content>
+        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+          <children>
+            <Rectangle fx:id="gadgetsBox" arcHeight="5.0" arcWidth="5.0" fill="#a7a8aa" height="576.0" layoutX="917.0" layoutY="26.0" stroke="BLACK" strokeType="INSIDE" width="565.0" />
+            <TabPane fx:id="gadgetsSelection" layoutX="918.0" layoutY="28.0" onMouseClicked="#spellTabSelected" prefHeight="26.0" prefWidth="562.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Nanobots">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="402.0" prefWidth="456.0" />
+                  </content>
+                </Tab>
+                <Tab text="Virus">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </Tab>
+                <Tab text="Firewall">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </Tab>
+                <Tab text="EMP">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </Tab>
+                <Tab text="Remote Control">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </Tab>
+                <Tab text="Recharge">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="401.0" prefWidth="296.0" />
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+            <ListView fx:id="boughtUpgrades" layoutX="937.0" layoutY="378.0" prefHeight="209.0" prefWidth="252.0" />
+            <ListView fx:id="availableUpgrades" layoutX="1203.0" layoutY="377.0" onMouseClicked="#upgradeBought" prefHeight="210.0" prefWidth="254.0" />
+            <Label fx:id="boughtUpgradesLabel" layoutX="985.0" layoutY="346.0" text="Bought Upgrades">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
+            <Label fx:id="availableUpgradesLabel" layoutX="1245.0" layoutY="346.0" text="Available Upgrades">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
+            <ImageView fx:id="attackImage" fitHeight="153.0" fitWidth="186.0" layoutX="1234.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="attackDescription" layoutX="953.0" layoutY="64.0" text="Description:">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Label>
+            <Label fx:id="attackDamage" layoutX="953.0" layoutY="172.0" text="Damage:">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Label>
+            <Label fx:id="attackNumberOfTurns" layoutX="953.0" layoutY="212.0" text="Number of Attacks:">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Label>
+            <Label fx:id="attackCost" layoutX="953.0" layoutY="252.0" text="Cost:">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Label>
+            <Label fx:id="attackHitChance" layoutX="953.0" layoutY="293.0" text="Chace of Hitting:">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Label>
+                  <Rectangle fx:id="playerStatsRectangle" arcHeight="5.0" arcWidth="5.0" fill="#a7a8aa" height="330.0" layoutX="58.0" layoutY="31.0" stroke="BLACK" strokeType="INSIDE" width="571.0" />
+                  <Label fx:id="playerStatsLabel" layoutX="281.0" layoutY="44.0" text="Your Stats">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="playerHealthLabel" layoutX="76.0" layoutY="99.0" text="Health:">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="playerDefenseLabel" layoutX="408.0" layoutY="99.0" text="Defense:">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="playerBoltsLabel" layoutX="76.0" layoutY="267.0" text="Bolts:">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="playerLevelLabel" layoutX="408.0" layoutY="273.0" text="Level:">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Label>
+                  <ProgressBar fx:id="levelProgress" layoutX="408.0" layoutY="327.0" prefWidth="200.0" progress="0.0" />
+                  <TextArea fx:id="attackDescriptionBox" disable="true" layoutX="953.0" layoutY="92.0" prefHeight="87.0" prefWidth="512.0" />
+                  <Button fx:id="buyAttackBtn" layoutX="1138.0" layoutY="64.0" mnemonicParsing="false" onAction="#buyAttack" text="Buy For 25 Bolts" />
+                  <Label fx:id="youWinLabel2" layoutX="719.0" layoutY="189.0" text="You Win!" visible="false">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="restartGameBtn2" layoutX="723.0" layoutY="224.0" mnemonicParsing="false" onAction="#restartGame2" text="Restart Game" visible="false" />
+          </children>
+        </AnchorPane>
+      </content>
+    </Tab>
+      <Tab onSelectionChanged="#battleTabSelected" text="Battle">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="694.0" prefWidth="1539.0">
+               <children>
+                  <ListView fx:id="enemiesList" layoutX="30.0" layoutY="34.0" prefHeight="562.0" prefWidth="339.0" />
+                  <Button fx:id="battleStartBtn" layoutX="158.0" layoutY="562.0" mnemonicParsing="false" onAction="#startBattle" text="Go To Battle" />
+                  <Label fx:id="playerNameInBattle" layoutX="904.0" layoutY="469.0" text="You">
+                     <font>
+                        <Font size="38.0" />
+                     </font>
+                  </Label>
+                  <Line fx:id="dividingLine" endX="-100.0" endY="425.20001220703125" layoutX="1149.0" layoutY="102.0" startX="-100.0" />
+                  <Label fx:id="enemyNameLabel" layoutX="1107.0" layoutY="467.0" text="Enemy">
+                     <font>
+                        <Font size="38.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="playerImage" fitHeight="296.0" fitWidth="200.0" layoutX="836.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="enemyImage" fitHeight="296.0" fitWidth="200.0" layoutX="1063.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true" />
+                  <ListView fx:id="availableAttacksListview" layoutX="407.0" layoutY="115.0" onMouseClicked="#attackUsed" prefHeight="200.0" prefWidth="200.0" />
+                  <Label fx:id="availableAttacksLabel" layoutX="417.0" layoutY="77.0" text="Available Attacks">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <ProgressBar fx:id="enemyHealthBar" layoutX="1063.0" layoutY="130.0" prefWidth="200.0" progress="0.0" />
+                  <Label fx:id="enemyHealthBarLabel" layoutX="1145.0" layoutY="97.0" text="Health" />
+                  <Label fx:id="playerHealthBarLabel" layoutX="918.0" layoutY="97.0" text="Health" />
+                  <ProgressBar fx:id="playerHealthBar" layoutX="836.0" layoutY="130.0" prefWidth="200.0" progress="0.0" />
+                  <Label fx:id="healthLabel" layoutX="667.0" layoutY="122.0" text="Health:" />
+                  <Label fx:id="defenseLabel" layoutX="667.0" layoutY="158.0" text="Current Defense:" />
+                  <Label fx:id="chromebitsLabel" layoutX="667.0" layoutY="196.0" text="Chromebits:" />
+                  <Label fx:id="resultOfAttack" layoutX="407.0" layoutY="333.0" />
+                  <Button fx:id="endTurnBtn" layoutX="475.0" layoutY="441.0" mnemonicParsing="false" onAction="#endTurn" text="End Turn" />
+                  <Label fx:id="enemyAttackUsedLabel" layoutX="1337.0" layoutY="167.0" text="Label" />
+                  <Label fx:id="enemyAttackResultLabel" layoutX="1337.0" layoutY="196.0" text="Label" />
+                  <Label fx:id="enemyClassLabel" layoutX="144.0" layoutY="14.0" text="Enemies: Bronze Key" />
+                  <Label fx:id="battleResultLabel" layoutX="566.0" layoutY="539.0" text="Battle Result">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="describeEnemiesBox" layoutX="30.0" layoutY="605.0" prefHeight="138.0" prefWidth="338.0" />
+                  <Label fx:id="youWinLabel" layoutX="731.0" layoutY="306.0" opacity="0.0" text="You Win!" visible="false">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="restartGameBtn" layoutX="722.0" layoutY="338.0" mnemonicParsing="false" onAction="#restartGame" opacity="0.0" text="Restart The Game" />
+               </children>
+               <effect>
+                  <Glow />
+               </effect>
+            </AnchorPane>
+        </content>
+      </Tab>
+      <Tab text="Story">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TextArea fx:id="showStory" layoutX="27.0" layoutY="26.0" prefHeight="406.0" prefWidth="1307.0" wrapText="true">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextArea>
+                  <Label layoutX="497.0" layoutY="529.0" text="DO NOT LEAVE THIS TAB">
+                     <font>
+                        <Font size="33.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="641.0" layoutY="473.0" mnemonicParsing="false" onAction="#finishStoryParagraph" text="Understood" />
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+  </tabs>
+</TabPane>
